@@ -16,7 +16,7 @@ connectDb();
 app.use('/v1', userRouter);
 
 app.get('/', (req, res) => {
-  res.json({ message: 'OK' });
+  res.send(`<h1>Please visit the following link</h1>`);
 });
 
 app.listen(process.env.PORT || 5000, () => {
