@@ -4,10 +4,13 @@ const register = () => {};
 
 const login = asyncHandler(async (req, res) => {
   let { email, password } = req.body;
-  let userExists = await User.findOne({ email });
-  res.send(`Message: ${userExists}.`);
-  if (userExists) {
-    res.json({ message: userExists.password });
+  let user = await User.findOne({ email });
+  // res.send(`Message: ${user}.`);
+  // (await user.checkPassword(password))
+  if (user && password == user.password) {
+    res.send({ message: 'Welcome back' });
+  } else {
+    res.status(401).send('Please check the credentials.');
   }
 });
 
