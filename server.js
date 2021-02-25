@@ -3,6 +3,8 @@ const app = express();
 const dotenv = require('dotenv');
 const cors = require('cors');
 const morgan = require('morgan');
+const path = require('path');
+
 const connectDb = require('./config/db');
 
 const userRouter = require('./routes/userRoutes');
@@ -14,6 +16,8 @@ app.use(express.json());
 connectDb();
 
 app.use('/v1', userRouter);
+
+app.use('/static', express.static(path.join(__dirname, '/static')));
 
 app.get('/', (req, res) => {
   res.send(`<h1>Please visit the following link</h1>`);
