@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 connectDb();
 
-app.use('/v1/users', userRouter);
+app.use('/v1', userRouter);
 
 app.use('/static', express.static(path.join(__dirname, '/static')));
 
