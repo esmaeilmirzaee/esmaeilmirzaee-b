@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const morgan = require('morgan');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const connectDb = require('./config/db');
 
@@ -12,7 +13,7 @@ const userRouter = require('./routes/userRoutes');
 dotenv.config();
 app.use(cors());
 app.use(morgan('dev'));
-app.use(express.json());
+app.use(bodyParser.json());
 connectDb();
 
 app.use('/v1', userRouter);
