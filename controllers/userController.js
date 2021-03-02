@@ -14,4 +14,18 @@ const login = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { register, login };
+let fakeUser = asyncHandler((req, res) => {
+  let user = {
+    _id: '47328149234jhjdsaf6d734',
+    name: 'John',
+    family: 'Doe',
+    email: 'johndoe@sample.com',
+    password: 'secretPassword',
+    token: 'safjdsahjk23h43bmdfafd0a9sfsdaioj431242',
+    isAdmin: false,
+  };
+
+  res.json(user);
+});
+
+module.exports = { register, login, fakeUser };
